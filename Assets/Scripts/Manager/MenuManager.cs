@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private CanvasGroup _group;
     [SerializeField] private Button _playButton;
     [SerializeField] private GameObject _ExitButton;
 
@@ -22,11 +21,6 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         ForPlay();
-    }
-
-    void Update()
-    {
-
     }
 
     public void ForPlay()
