@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using System.Collections.Generic;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -11,15 +13,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _karePrefab;
     [SerializeField] private Transform _karePanel;
     [SerializeField] private CanvasGroup _panel;
+    [SerializeField] private Transform _soruPanel;
+    [SerializeField] private TMP_Text _soruText;
 
     private float fadeDuration = 1.0f;
-
+    private int _bolunenSayý, _bolenSayý;
+    private int _kacýncýSoru;
     private GameObject[] karelerDizi = new GameObject[25];
+    List<int> _bolumdegerleriListesi = new List<int>();
 
     private void Start()
     {
+        _soruPanel.GetComponent<RectTransform>().localScale = Vector3.zero ;
+
         StartCoroutine(FadeOut());
         kareOlustur();
+    }
+
+    private void Update()
+    {
+        
     }
 
     System.Collections.IEnumerator FadeOut()
@@ -45,6 +58,7 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(DoFadeRoutine());
         DegerYazdýr();
+        Invoke("SoruPanelAc", 1.5f);
     }
 
     IEnumerator DoFadeRoutine()
@@ -62,10 +76,26 @@ public class GameManager : MonoBehaviour
     {
         foreach (var kare in karelerDizi)
         {
-            int RastgeleDeger = UnityEngine.Random.Range(1, 13);
-
+            int RastgeleDeger = UnityEngine.Random.Range(4, 12);
+            _bolumdegerleriListesi.Add(RastgeleDeger); 
             kare.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = RastgeleDeger.ToString();
         }
     }
+
+    public void SoruPanelAc()
+    {
+        SoruyuSor();
+        _soruPanel.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBack);
+    }
+    
+    private void SoruyuSor()
+    {
+        _bolenSayý = UnityEngine.Random.Range(3, 13);
+        _kacýncýSoru = UnityEngine.Random.Range(0,_bolumdegerleriListesi.Count);
+        Debug.Log(_kacýncýSoru);
+        _bolunenSayý = _bolenSayý * _bolumdegerleriListesi[_kacýncýSoru];
+        _soruText.text = _bolunenSayý.ToString() + " / " + _bolenSayý.ToString();
+    }
+
 
 }
