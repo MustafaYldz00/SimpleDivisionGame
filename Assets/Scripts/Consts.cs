@@ -6,5 +6,4 @@ public class Consts
         public const string MENU_SCENE = "MenuLevel";
 
     }
-
 }

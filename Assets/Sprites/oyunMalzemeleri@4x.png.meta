@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_0
+      name: bilo
       rect:
         serializedVersion: 2
         x: 5
@@ -149,7 +149,7 @@ TextureImporter:
         width: 340
         height: 430
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -163,7 +163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_1
+      name: "y\u0131ld\u0131z"
       rect:
         serializedVersion: 2
         x: 375
@@ -171,7 +171,7 @@ TextureImporter:
         width: 459
         height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_2
+      name: kalp
       rect:
         serializedVersion: 2
         x: 838
@@ -193,7 +193,7 @@ TextureImporter:
         width: 382
         height: 382
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_3
+      name: damla
       rect:
         serializedVersion: 2
         x: 1274
@@ -215,7 +215,7 @@ TextureImporter:
         width: 361
         height: 428
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,15 +229,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_4
+      name: coin
       rect:
         serializedVersion: 2
         x: 1694
-        y: 47
-        width: 371
-        height: 363
+        y: 53
+        width: 360
+        height: 360
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oyunMalzemeleri@4x_5
+      name: yaprak
       rect:
         serializedVersion: 2
         x: 2090
@@ -259,7 +259,7 @@ TextureImporter:
         width: 422
         height: 404
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e52ee6479da1d6445846c1f582915b23
     internalID: 0
     vertices: []
     indices: 
@@ -285,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bilo: 4380802985191466148
+      coin: -5157780860501105738
+      damla: 7835213880407035759
+      kalp: 2712035917638653497
+      yaprak: -8300896727939277280
+      "y\u0131ld\u0131z": -6220210443030218386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
