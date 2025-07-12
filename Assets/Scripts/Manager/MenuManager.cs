@@ -11,15 +11,12 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        _playButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
-        });
 
     }
 
     void Start()
     {
+        
         ForPlay();
     }
 
@@ -31,5 +28,11 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+    }
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
+        AudioManager.Instance.Play(SoundType.ButtonClickSound);
     }
 }

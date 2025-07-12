@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CanvasGroup _panel;
     [SerializeField] private Transform _soruPanel;
     [SerializeField] private TMP_Text _soruText;
+    [SerializeField] private GameObject _finalPanel;
+    [SerializeField] private Sprite[] _resimler;
 
     private float fadeDuration = 1.0f;
     private int _bolunenSayý, _bolenSayý;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     private int _kalanHak;
     private bool _butonaBasýldýmý;
     private string _zorlukderecesi;
+    private GameObject _GecerliKare;
 
     private GameObject[] karelerDizi = new GameObject[25];
     List<int> _bolumdegerleriListesi = new List<int>();
@@ -34,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
+        _finalPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+
         _butonaBasýldýmý = false;
         _soruPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
         StartCoroutine(FadeOut());
@@ -69,9 +76,10 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 25; i++)
         {
-            GameObject kare = Instantiate(_karePrefab, _karePanel);
+            GameObject kare = Instantiate(_karePrefab, _karePanel);  
             kare.transform.GetComponent<Button>().onClick.AddListener(() => ButonaBasýldý());
             karelerDizi[i] = kare;
+            kare.transform.GetChild(1).GetComponent<Image>().sprite = _resimler[UnityEngine.Random.Range(0, _resimler.Length)];
         }
         StartCoroutine(DoFadeRoutine());
         DegerYazdýr();
@@ -93,7 +101,9 @@ public class GameManager : MonoBehaviour
     {
         if (_butonaBasýldýmý)
         {
+            
             _butonDegeri = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text);
+            _GecerliKare = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             //Debug.Log(_butonDegeri);
             SonucuKontrolEt();
         }
@@ -103,16 +113,46 @@ public class GameManager : MonoBehaviour
     {
         if (_butonDegeri == _dogruSonuc)
         {
+            _GecerliKare.transform.GetChild(1).GetComponent<Image>().enabled = true;
+            _GecerliKare.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+            _GecerliKare.transform.GetComponent<Button>().interactable = false;
             _scoreManager.PuanArtýr(_zorlukderecesi);
             //Debug.Log(_zorlukderecesi+ " --- "+ _scoreManager._topPuan);
             //Debug.Log("Doðru");
+            AudioManager.Instance.Play(SoundType.CorrectSound);
+            _bolumdegerleriListesi.RemoveAt(_kacýncýSoru);
+
+            if (_bolumdegerleriListesi.Count > 0)
+            {
+                SoruPanelAc();
+            }
+            else
+            {
+                OyunBitti();
+                AudioManager.Instance.Play(SoundType.WinSound);
+            }
+
         }
-        else
+        else 
         {
+        
+            AudioManager.Instance.Play(SoundType.inCorrentSound);
             _kalanHak--;
             _healthManager.CanKontrol(_kalanHak);
             Debug.Log("Yanlýþ");
         }
+        if (_kalanHak <= 0)
+        {
+            OyunBitti();
+            AudioManager.Instance.Play(SoundType.LoseSound);
+        }
+    }
+
+    private void OyunBitti()
+    {
+        Debug.Log("Oyun bitti");
+        _butonaBasýldýmý = false;
+        _finalPanel.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBack);
     }
     private void DegerYazdýr()
     {
