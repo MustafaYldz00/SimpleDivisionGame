@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8a9eabf010e3b154983af01ed73176f8
+guid: 7378f144761f1df4482ca936b1c4cc70
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2000607524074098627
-    second: oyuncak2@4x_0
+      213: -4342958658121732306
+    second: oyunLOGO_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oyuncak2@4x_0
+      name: oyunLOGO_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 387
-        height: 400
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d30f6987e0a6c34e0800000000000000
-      internalID: -2000607524074098627
+      spriteID: e2f62744c16bab3c0800000000000000
+      internalID: -4342958658121732306
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      oyuncak2@4x_0: -2000607524074098627
+      oyunLOGO_0: -4342958658121732306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

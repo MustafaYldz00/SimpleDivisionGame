@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      baslaBtn@4x_0: 7975609068878711774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

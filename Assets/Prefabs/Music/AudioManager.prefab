@@ -56,7 +56,7 @@ MonoBehaviour:
   - Source: {fileID: 0}
     AudioClip: {fileID: 8300000, guid: 31c67071c594600468ec02d88ed352be, type: 3}
     SoundType: 4
-    Volume: 1
+    Volume: 0.6
     Pitch: 1
     Mute: 0
     Loop: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
   - Source: {fileID: 0}
     AudioClip: {fileID: 8300000, guid: 09c61e9c156e2024b8f0d6c327c7ee92, type: 3}
     SoundType: 2
-    Volume: 1
+    Volume: 0.3
     Pitch: 1
     Mute: 0
     Loop: 0

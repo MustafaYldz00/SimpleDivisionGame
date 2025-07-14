@@ -5,6 +5,7 @@ using DG.Tweening;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Threading;
 
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _soruPanel;
     [SerializeField] private TMP_Text _soruText;
     [SerializeField] private GameObject _finalPanel;
+    [SerializeField] private Timer _timerTextUI;
     [SerializeField] private Sprite[] _resimler;
 
     private float fadeDuration = 1.0f;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         
-
+        
         _finalPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
 
         _butonaBasýldýmý = false;
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        
     }
 
     System.Collections.IEnumerator FadeOut()
@@ -84,6 +86,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DoFadeRoutine());
         DegerYazdýr();
         Invoke(nameof(SoruPanelAc), 3.5f);
+        //Timer.Instance.StartTimer();
+        
     }
 
     IEnumerator DoFadeRoutine()
@@ -125,6 +129,7 @@ public class GameManager : MonoBehaviour
             if (_bolumdegerleriListesi.Count > 0)
             {
                 SoruPanelAc();
+
             }
             else
             {
@@ -153,12 +158,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Oyun bitti");
         _butonaBasýldýmý = false;
         _finalPanel.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBack);
+        _timerTextUI.StopTimer();
+        
     }
     private void DegerYazdýr()
     {
         foreach (var kare in karelerDizi)
         {
-            int RastgeleDeger = UnityEngine.Random.Range(4, 12);
+            int RastgeleDeger = UnityEngine.Random.Range(3, 13);
             _bolumdegerleriListesi.Add(RastgeleDeger);
             kare.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = RastgeleDeger.ToString();
         }
@@ -169,11 +176,12 @@ public class GameManager : MonoBehaviour
         SoruyuSor();
         _soruPanel.GetComponent<RectTransform>().DOScale(1, 0.5f).SetEase(Ease.OutBack);
         _butonaBasýldýmý = true;
+        
     }
 
     private void SoruyuSor()
     {
-        _bolenSayý = UnityEngine.Random.Range(3, 13);
+        _bolenSayý = UnityEngine.Random.Range(3, 15);
 
         _kacýncýSoru = UnityEngine.Random.Range(0, _bolumdegerleriListesi.Count);
 
